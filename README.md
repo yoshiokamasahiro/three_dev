@@ -4,3 +4,4 @@
 ### 2024.01.04
 - viteインストール
 - three.jsをインストール
+- scene、camera、rendererを追加
