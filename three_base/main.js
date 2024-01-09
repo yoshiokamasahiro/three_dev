@@ -51,13 +51,22 @@ window.addEventListener("load", ()=> {
 
   //マウス操作
   controls = new OrbitControls(camera, renderer.domElement);
-
+  
+  //onWindowResizeを発火
+  window.addEventListener("resize" , onWindowResize)
   animate();
 })
 
-
-
-
+//ブラウザのリサイズに対応
+function onWindowResize() {
+  //レンダラーのサイズを随時更新する
+  renderer.setSize(window.innerWidth,window.innerHeight);
+  //アスペクト比
+  camera.aspect = window.innerWidth / window.innerHeight;
+  //カメラ関係のプロパティを変更する時には必ず呼び出す必要がある
+  camera.updateProjectionMatrix();
+  
+}
 //ポイント光源を球体周りで移動させる
 function animate() {
   pointLight.position.set(
